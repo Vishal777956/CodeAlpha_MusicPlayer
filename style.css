@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player {
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 360px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.cover {
+  margin-bottom: 15px;
+}
+
+.cover img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.details h3 {
+  margin: 10px 0 5px;
+  font-size: 22px;
+  color: #333;
+}
+
+.details p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.controls {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.controls button {
+  font-size: 20px;
+  background: #e0e0e0;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex: 1 1 80px;
+  max-width: 80px;
+}
+
+.controls button:hover {
+  background: #ccc;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#progress {
+  flex: 1;
+  cursor: pointer;
+}
+
+.volume-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+#volume {
+  width: 60%;
+  cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .details h3 {
+    font-size: 18px;
+  }
+
+  .controls button {
+    font-size: 18px;
+    padding: 10px 14px;
+  }
+
+  #volume {
+    width: 50%;
+  }
+
+  .cover img {
+    max-height: 250px;
+  }
+}
