@@ -1,42 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CodeAlpha Music Player</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="player">
-    <div class="cover">
-      <img id="cover" src="images/cover1.jpeg" alt="Album Cover" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeAlpha Music Player</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="player">
+        <div class="cover">
+          <img id="cover" src="images/cover1.jpeg" alt="Album Cover" />
+        </div>
+        <div class="details">
+          <h2 id="title">Too Many Nights</h2>
+          <p id="artist">Metro Boomin</p>
+        </div>
+        <audio id="audio" src="music/song1.mp3"></audio>
+        <div class="progress-container">
+          <span id="current">0:00</span>
+          <input type="range" id="progress" value="0" />
+          <span id="duration">0:00</span>
+        </div>
+        <div class="controls">
+          <button id="prev">⏮️</button>
+          <button id="play">▶️</button>
+          <button id="next">⏭️</button>
+        </div>
+        <div class="volume-container">
+          <label for="volume">🔊</label>
+          <input
+            type="range"
+            id="volume"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+          />
+        </div>
+      </div>
+      <div class="playlist">
+        <button id="playlist-toggle">Show Playlist</button>
+        <div id="playlist-container" class="hidden">
+          <h3>Playlist</h3>
+          <ul id="playlist-list"></ul>
+        </div>
+      </div>
     </div>
-
-    <div class="details">
-      <h3 id="title">Too Many Nights</h3>
-      <p id="artist">Metro Boomin</p>
-    </div>
-
-    <audio id="audio" src="music/song1.mp3"></audio>
-
-    <div class="controls">
-      <button id="prev">⏮️</button>
-      <button id="play">▶️</button>
-      <button id="next">⏭️</button>
-    </div>
-
-    <div class="progress-container">
-      <span id="current">0:00</span>
-      <input type="range" id="progress" value="0" />
-      <span id="duration">0:00</span>
-    </div>
-
-    <div class="volume-container">
-      <label for="volume">🔊</label>
-      <input type="range" id="volume" min="0" max="1" step="0.01" value="1" />
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

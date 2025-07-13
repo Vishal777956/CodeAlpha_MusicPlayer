@@ -9,6 +9,9 @@ const artist = document.getElementById("artist");
 const cover = document.getElementById("cover");
 const current = document.getElementById("current");
 const duration = document.getElementById("duration");
+const playlistList = document.getElementById("playlist-list");
+const playlistToggle = document.getElementById("playlist-toggle");
+const playlistContainer = document.getElementById("playlist-container");
 
 let isPlaying = false;
 let songIndex = 0;
@@ -18,26 +21,26 @@ const songs = [
     title: "Too Many Nights",
     artist: "Metro Boomin",
     file: "song1.mp3",
-    cover: "cover1.jpeg"
+    cover: "cover1.jpeg",
   },
   {
     title: "Stay",
     artist: "Justin Bieber",
     file: "song2.mp3",
-    cover: "cover2.jpg"
+    cover: "cover2.jpg",
   },
   {
     title: "Chammak Challo",
     artist: "Akon",
     file: "song3.mp3",
-    cover: "cover3.jpg"
+    cover: "cover3.jpg",
   },
   {
     title: "I'll Do it",
-    artist: "Heidi Montag ",
+    artist: "Heidi Montag",
     file: "song4.mp3",
-    cover: "cover4.jpeg"
-  }
+    cover: "cover4.jpeg",
+  },
 ];
 
 function loadSong(song) {
@@ -45,6 +48,7 @@ function loadSong(song) {
   artist.textContent = song.artist;
   audio.src = `music/${song.file}`;
   cover.src = `images/${song.cover}`;
+  updatePlaylist();
 }
 
 function playSong() {
@@ -57,6 +61,23 @@ function pauseSong() {
   isPlaying = false;
   audio.pause();
   playBtn.textContent = "▶️";
+}
+
+function updatePlaylist() {
+  playlistList.innerHTML = "";
+  songs.forEach((song, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${song.title} - ${song.artist}`;
+    if (index === songIndex) {
+      li.classList.add("active");
+    }
+    li.addEventListener("click", () => {
+      songIndex = index;
+      loadSong(songs[songIndex]);
+      playSong();
+    });
+    playlistList.appendChild(li);
+  });
 }
 
 playBtn.addEventListener("click", () => {
@@ -90,10 +111,18 @@ volume.addEventListener("input", () => {
   audio.volume = volume.value;
 });
 
+playlistToggle.addEventListener("click", () => {
+  playlistContainer.classList.toggle("visible");
+  playlistToggle.textContent = playlistContainer.classList.contains("visible")
+    ? "Hide Playlist"
+    : "Show Playlist";
+});
+
 function formatTime(time) {
   const mins = Math.floor(time / 60) || 0;
   const secs = Math.floor(time % 60) || 0;
-  return `${mins}:${secs < 10 ? "0" + secs : secs}`;
+  return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
 }
 
 loadSong(songs[songIndex]);
+updatePlaylist();
